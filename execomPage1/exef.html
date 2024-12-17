@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Team Profile Cards</title>
+    <style>
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(128, 0, 128, 0.4);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 20px rgba(128, 0, 128, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(128, 0, 128, 0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
+        }
+
+        body {
+            background-color: #121212;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            min-height: 100vh;
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .card {
+            width: 100%;
+            aspect-ratio: 190 / 254;
+            background: #1e1e1e;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.5s;
+            position: relative;
+            color: #ffffff;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            box-shadow: 0 0 20px rgba(128, 0, 128, 0.2);
+        }
+
+        .card .blob {
+            height: 10px;
+            width: 75%;
+            border-radius: 0 0 30px 30px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, #800080, #4b0082, #800080);
+            background-size: 1000px 100%;
+            animation: shimmer 3s linear infinite;
+            visibility: visible;
+            transition: all 0.3s;
+        }
+
+        .card .img {
+            display: flex;
+            margin: 30px auto 10px auto;
+            width: 70px;
+            height: 70px;
+            background-color: #34045B;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+
+        .card:hover .img {
+            width: 100%;
+            height: 70%;
+            border-radius: 0;
+            margin: 0 auto;
+            object-fit: cover;
+            z-index: 99999;
+            animation: none;
+        }
+
+        .card h2 {
+            padding: 15px 10px;
+            font-size: 25px;
+            transition: all 0.1s;
+            z-index: -99;
+            line-height: 17px;
+        }
+
+        .card .name {
+            font-size: 18px;
+            display: block;
+            background: linear-gradient(45deg, white, #4b0082);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card .designation {
+            font-size: 14px;
+            color: #b0b0b0;
+            display: block;
+        }
+
+        .card:hover h2 {
+            opacity: 0;
+            width: 100%;
+            position: absolute;
+            transition: all 0.5s;
+        }
+
+        .card .hover-designation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(128, 0, 128, 0.8) 0%, rgba(128, 0, 128, 0) 100%);
+            color: white;
+            padding: 30px 0 10px;
+            opacity: 0;
+            transition: all 0.5s ease;
+            text-align: center;
+            transform: translateY(100%);
+            z-index: 30;
+        }
+
+        .card:hover .hover-designation {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1200px) {
+            .card-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-container">
+        <!-- Row 1 -->
+        <div class="card">
+            <div class="blob"></div>
+            <img src="sam1.png" alt="Member 1" class="img">
+            <h2>
+                <span class="name">Sambhav Oswal</span>
+                <span class="designation">Secretary</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Secretary<br>BEC-IEEE SB</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member2.png" alt="Member 2" class="img">
+            <h2>
+                <span class="name">Jane Doe</span>
+                <span class="designation">Vice President</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Vice President<br>Technical Affairs</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member3.png" alt="Member 3" class="img">
+            <h2>
+                <span class="name">John Smith</span>
+                <span class="designation">Treasurer</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Treasurer<br>Financial Management</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member4.png" alt="Member 4" class="img">
+            <h2>
+                <span class="name">Emily Chen</span>
+                <span class="designation">Head of Events</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Head of Events<br>Event Coordination</p>
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member5.png" alt="Member 5" class="img">
+            <h2>
+                <span class="name">Michael Lee</span>
+                <span class="designation">Technical Lead</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Technical Lead<br>Innovation</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member6.png" alt="Member 6" class="img">
+            <h2>
+                <span class="name">Sarah Johnson</span>
+                <span class="designation">Marketing Director</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Marketing Director<br>Brand Strategy</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member7.png" alt="Member 7" class="img">
+            <h2>
+                <span class="name">Alex Rodriguez</span>
+                <span class="designation">HR Manager</span>
+            </h2>
+            <div class="hover-designation">
+                <p>HR Manager<br>Talent Acquisition</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member8.png" alt="Member 8" class="img">
+            <h2>
+                <span class="name">Rachel Kim</span>
+                <span class="designation">Research Head</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Research Head<br>R&D Department</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member8.png" alt="Member 8" class="img">
+            <h2>
+                <span class="name">Rachel Kim</span>
+                <span class="designation">Research Head</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Research Head<br>R&D Department</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member8.png" alt="Member 8" class="img">
+            <h2>
+                <span class="name">Rachel Kim</span>
+                <span class="designation">Research Head</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Research Head<br>R&D Department</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member8.png" alt="Member 8" class="img">
+            <h2>
+                <span class="name">Rachel Kim</span>
+                <span class="designation">Research Head</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Research Head<br>R&D Department</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member8.png" alt="Member 8" class="img">
+            <h2>
+                <span class="name">Rachel Kim</span>
+                <span class="designation">Research Head</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Research Head<br>R&D Department</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="blob"></div>
+            <img src="member8.png" alt="Member 8" class="img">
+            <h2>
+                <span class="name">Rachel Kim</span>
+                <span class="designation">Research Head</span>
+            </h2>
+            <div class="hover-designation">
+                <p>Research Head<br>R&D Department</p>
+            </div>
+        </div>
+
+        <!-- Additional rows can be added following the same pattern -->
+    </div>
+</body>
+
+</html>
