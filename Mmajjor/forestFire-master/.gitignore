@@ -1,0 +1,9 @@
+Data/ 
+Scripts/ 
+
+.vercel
+__pycache__/
+*.pyc
+venv/
+new_venv/
+.env
